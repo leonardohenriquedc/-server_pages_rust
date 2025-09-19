@@ -8,9 +8,6 @@
 
 <h1 style="display: flex; margin: auto; justify-content: space-around;"> Aqui vão meus artigos</h1>
 
-<div id="container">
-   <a href="https://www.w3schools.com">Visit W3Schools.com!</a>
-
- <a href="http://localhost:7878/intro.md">intro.md</a> 
-
+<div id="container" style="text-align: center;">
+<a href="http://localhost:7878/post/intro.md">intro.md</a>
 </div>
