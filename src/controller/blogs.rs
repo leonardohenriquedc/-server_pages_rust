@@ -1,4 +1,4 @@
-use actix_web::{HttpResponse, Responder, get, post, web};
+use actix_web::{HttpResponse, Responder, get, web};
 
 use crate::service::get_blogs::{get_blog_post, get_links_of_all_blogs};
 

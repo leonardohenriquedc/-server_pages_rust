@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DevLeo</title>
+  {{ style_sheet | safe }}
+</head>
+
+<body>
+  <header style="display: flex; margin: auto; justify-content: space-around;">
+    <h3>DevLeo.com</h1>
+      <h3>Um blog técnico e sucinto</h3>
+  </header>
+  <hr>
+  <main>
+    <h1 style="display: flex; margin: auto; justify-content: space-around;">DevLeo</h1>
+    <ul>
+      {% for link in links %}
+      <li> {{ link | safe }} </li>
+      {% endfor %}
+    </ul>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  display: flex;
+  width: 60dvh;
+  justify-content: start;
+  text-align: justify;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <link href={{ style_sheet }} rel="stylesheet">
+</head>
+
+<body>
+  <header style="display: flex; margin: auto; justify-content: space-around;">
+    <h1><a href="http://localhost:7878/" style="text-decoration: none;">DevLeo.com</a></h1>
+    <h1>Um blog técnico e sucinto</h1>
+  </header>
+  <hr>
+
+  <h1>{{ title }}</h1>
+
+  <article id="content">
+    {{ content | safe }}
+  </article>
+
+</body>
+
+</html>
