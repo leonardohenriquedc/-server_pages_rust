@@ -132,7 +132,8 @@ async fn insert_lines_of_file_with_parameterization() -> Vec<String> {
     for name in name_of_blogs {
         let tag_ancora = format!(
             "<a href=\"http://localhost:7878/post/{}\">{}</a>",
-            name, name
+            name,
+            name.strip_suffix(".md").unwrap()
         );
 
         // Verifica se já existe no arquivo
