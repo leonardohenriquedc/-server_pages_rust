@@ -12,12 +12,12 @@ use pulldown_cmark::{Options, Parser, html};
 fn return_envs_links(type_number: i8) -> String {
     let path_files_blogs =
         env::var("PATH_FILES_BLOGS").expect("não foi possivel ler variavel de ambiente");
-    let link_debug =
-        env::var("LINK_REQUEST_DEBUG").expect("Não foi possivel ler variaveis de ambiente");
+    let link =
+        env::var("LINK_REQUEST_REQUEST").expect("Não foi possivel ler variaveis de ambiente");
 
     match type_number {
         1 => path_files_blogs,
-        _ => link_debug,
+        _ => link,
     }
 }
 
