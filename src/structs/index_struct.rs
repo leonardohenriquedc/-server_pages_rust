@@ -1,8 +1,7 @@
-use std::fs;
+use std::{env, fs};
 
 use askama::Template;
 
-const PATH_STYLES_SHEETS: &str = "templates/styles/";
 #[derive(Template)]
 #[template(path = "layout/index.html")]
 pub struct TemplateIndex {
@@ -17,9 +16,12 @@ impl TemplateIndex {
     }
 
     pub fn new() -> Self {
-        let mut string_style =
-            fs::read_to_string(format!("{}{}", PATH_STYLES_SHEETS, "style_index.css"))
-                .expect("Não foi possivel ler arquivo");
+        let mut string_style = fs::read_to_string(format!(
+            "{}{}",
+            env::var("PATH_STYLES_SHEETS").expect("Não foi possivel ler variavel de ambiente"),
+            "style_index.css"
+        ))
+        .expect("Não foi possivel ler arquivo css");
 
         string_style = format!("<style>{}</style>", string_style);
 

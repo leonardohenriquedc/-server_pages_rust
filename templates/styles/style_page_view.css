@@ -1,0 +1,18 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+body>main {
+  max-width: 60dvw;
+}
+
+h1 {
+  text-align: center;
+}
+
+hr {
+  width: 100%;
+}

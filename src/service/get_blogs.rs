@@ -13,7 +13,7 @@ fn return_envs_links(type_number: i8) -> String {
     let path_files_blogs =
         env::var("PATH_FILES_BLOGS").expect("não foi possivel ler variavel de ambiente");
     let link_debug =
-        env::var("LINK_REQUEST_RELEASE").expect("Não foi possivel ler variaveis de ambiente");
+        env::var("LINK_REQUEST_DEBUG").expect("Não foi possivel ler variaveis de ambiente");
 
     match type_number {
         1 => path_files_blogs,
