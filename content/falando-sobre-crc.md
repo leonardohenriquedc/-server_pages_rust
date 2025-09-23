@@ -56,4 +56,10 @@ Como vemos, o resultado dessa operação foi 0, ou seja, o cálculo está corret
 ### Observações
 
 - Por que, no Gerador Polinomial, os monômios ausentes são levados em consideração?  
-  - Porque a posição binária de cada expoente precisa ser preservada.
+  - Porque a posição binária de cada expoente precisa ser preservada.  
+
+Como podemos ver um cálculo relativamente de se entender, agora vou mostrar ao leitor dois videos do Professor Orthon Batista, que explica de forma visual e
+intuitiva como funciona a divisão:
+
+[Calculo de CRC - Parte 1]("https://www.youtube.com/watch?v=XWcJcybL3JQ&list=PL7KqjbmLa7gHguFAPlqc-f_gx8TvVbTYE")  
+[Calculo de CRC - Parte 2]("https://www.youtube.com/watch?v=wyUNSzDbFjg&list=PL1iys8ibudKeD2f4c0-CdzHzmcd4bKvt1")
