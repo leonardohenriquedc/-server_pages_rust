@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::env;
 use std::fs::{self};
 
@@ -25,10 +26,8 @@ pub async fn get_links_of_all_blogs() -> String {
 
     let name_blogs = get_name_files().await;
 
-    for name in name_blogs {
-        let link = format!("{}post/{}", return_envs_links(2), name);
-        let name_format = name.strip_suffix(".md").unwrap().to_string();
-        template_index.insert_tag_ancora(link, name_format);
+    for (name, title) in name_blogs {
+        template_index.insert_tag_ancora(format!("{}post/{}", return_envs_links(2), name), title);
     }
 
     template_index.render().unwrap()
@@ -37,17 +36,32 @@ pub async fn get_links_of_all_blogs() -> String {
 pub async fn get_blog_post(name: String) -> String {
     let path_article = format!("{}{}", return_envs_links(1), name);
 
-    let article_content =
+    let mut article_content =
         fs::read_to_string(path_article.as_str()).expect("Não foi possivel ler arquivo");
+
+    let mut title = String::new();
+
+    for (index, line) in article_content.clone().lines().enumerate() {
+        if line == "---" && index != 0 {
+            article_content = article_content.replace(line, "");
+            break;
+        }
+
+        if line.starts_with("title: ") {
+            title = line
+                .strip_prefix("title: ")
+                .expect("Não foi possivel remover prefixo")
+                .to_string();
+        }
+
+        article_content = article_content.replace(line, "");
+    }
 
     let content = parsing_md_to_html(&article_content);
 
     let mut template_view = TemplatePageViewArticle::new();
 
-    template_view.title = name
-        .strip_suffix(".md")
-        .expect("Erroe ao remover sufixo")
-        .to_string();
+    template_view.title = title;
     template_view.content = content;
 
     template_view
@@ -69,17 +83,53 @@ fn parsing_md_to_html(content: &str) -> String {
     content_as_html
 }
 
-async fn get_name_files() -> Vec<String> {
-    let mut name_blogs: Vec<String> = Vec::new();
+async fn get_name_files() -> HashMap<String, String> {
+    let mut name_title_file_blogs: HashMap<String, String> = HashMap::new();
 
     let read_dir = fs::read_dir(return_envs_links(1)).expect("Não foi possivel localizar pasta");
 
     for entry in read_dir {
         match entry {
-            Ok(valor) => name_blogs.push(valor.file_name().into_string().unwrap()),
+            Ok(valor) => {
+                name_title_file_blogs.insert(
+                    valor.file_name().into_string().unwrap(),
+                    get_title_of_file(
+                        fs::read_to_string(valor.path()).expect("Não foi possivel ler arquivo"),
+                        "title: ".to_string(),
+                    ),
+                );
+            }
             Err(error) => print!("Error occurred: {}", error.status_code()),
         }
     }
 
-    name_blogs
+    name_title_file_blogs
+}
+
+fn get_title_of_file(file: String, metadado: String) -> String {
+    let mut metadados_dois: Vec<String> = Vec::new();
+
+    for (index, line) in file.lines().enumerate() {
+        if line == "---" && index != 0 {
+            break;
+        }
+
+        if line != "---" {
+            metadados_dois.push(line.to_string());
+        }
+    }
+
+    if !metadado.is_empty() {
+        for line in &metadados_dois {
+            if line.starts_with(&metadado) {
+                return line
+                    .clone()
+                    .strip_prefix(&metadado)
+                    .expect("não foi possivel remover prefixo")
+                    .to_string();
+            }
+        }
+    }
+
+    metadados_dois.join("\n")
 }
