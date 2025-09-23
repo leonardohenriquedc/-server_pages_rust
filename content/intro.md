@@ -1,6 +1,7 @@
 ---
 title: intro de teste do markdown file
 author: leonardo
+data: 2025/09/22
 tags: ["Intro", "Testes"]
 ---
 
