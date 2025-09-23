@@ -5,6 +5,15 @@ body {
   flex-direction: column;
 }
 
+body>main {
+  text-align: justify;
+}
+
+pre {
+  display: flex;
+  justify-content: center;
+}
+
 @media only screen and (min-width: 1025px) {
   body>main {
     max-width: 60dvw;
