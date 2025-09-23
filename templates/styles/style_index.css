@@ -20,4 +20,6 @@ ul {
   width: 60dvw;
   justify-content: start;
   text-align: justify;
+  flex-direction: column;
+  gap: 10px;
 }

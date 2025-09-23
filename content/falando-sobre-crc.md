@@ -47,7 +47,7 @@ Vamos agora validar se o resultado dessa operação está correto. Essa validaç
 _________________________  
 000010101100  
     101011  
-------------------------  
+_________________________  
 000000000000
 ```
 
