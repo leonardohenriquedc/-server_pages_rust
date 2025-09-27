@@ -73,6 +73,10 @@ fn parsing_md_to_html(content: &str) -> String {
     let mut options = Options::empty();
 
     options.insert(Options::ENABLE_STRIKETHROUGH);
+    options.insert(Options::ENABLE_TABLES);
+    options.insert(Options::ENABLE_TASKLISTS);
+    options.insert(Options::ENABLE_FOOTNOTES);
+    options.insert(Options::ENABLE_MATH);
 
     let parser = Parser::new_ext(content, options);
 
