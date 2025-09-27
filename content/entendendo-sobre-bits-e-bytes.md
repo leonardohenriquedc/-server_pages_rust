@@ -74,7 +74,7 @@ Agora vamos resolver essas pequenas equações e vamos somar tais resultados:
 1 * 2⁷ = 128  
 ```
 
-Vamos somar os resultados: 1 + 2 + 4 + 0 + 0 + 32 + 0 + 128 = 167  ␍
+Vamos somar os resultados: 1 + 2 + 4 + 0 + 0 + 32 + 0 + 128 = 167  
 Sabemos agora que o byte 10100111 em binário representa o valor 167 em decimal, perceba que nessa conversão nos usamos primariamente a multiplicação.  
 Agora na conversão de decimal para binario usaremos duas operações que e a divisão e o modulo, na divisão vamos aproveita o quociente e no modulo o resto da divisão, lembrando que para as duas operadores se convergirem e necessario que a divisão respeite o resto e não tente zera-la afinal esse o principal fato de uso
 do modulo (um operação mod e uma divisão que não retorna o resultado em si, mas sim o resto daquela divisão), valor converter o valor 37 para binário:  
@@ -110,3 +110,4 @@ Agora valor resolver as equações e soma-las:
 ```
 
 Vamos somar os resultados: 1 + 0 + 4 + 0 + 0 + 32 = 37, perceba que o resultado final foi 37 novamente o que comprova que o nosso calculo de divisão está correto.
+Portanto podemos transformar um valor decimal em binário apenas fazendo divisões consecutivas pelo base 2, e fazemos isso ate que o quociente da divisão seja 0.  
