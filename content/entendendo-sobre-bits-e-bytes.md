@@ -111,3 +111,17 @@ Agora valor resolver as equações e soma-las:
 
 Vamos somar os resultados: 1 + 0 + 4 + 0 + 0 + 32 = 37, perceba que o resultado final foi 37 novamente o que comprova que o nosso calculo de divisão está correto.
 Portanto podemos transformar um valor decimal em binário apenas fazendo divisões consecutivas pelo base 2, e fazemos isso ate que o quociente da divisão seja 0.  
+Como acabamos de ver, podemos facilmente converter a representação de valores entre diferentes bases numéricas, portanto vamos ver mais duas bases de extrema importância para a área tecnologia com um todo, a **base Octal** e a **base Hexadecimal**.  
+
+## Base Octal  
+
+A base octal trata-se de representações numéricas que vão de 0 a 7 (8 dígitos), a quantidade de bits que pode representar ate 8 valores e 3 como vimos na primeira tabela.  
+Vejamos brevemente como funciona as conversões de octal para decimal e vice versa e também para binário:  
+
+### Decimal para Octal e vice-versa  
+
+Para fazer a conversão de Decimal para Octal fazemos exatamente no formato do Decimal para Binário, divisões modulo sucessivas e pegamos o resto da ultima divisão ate a primeira e pronto, temos a representação do valor em Octal, o inverso também equivale a de binário para decimal, portando para convertermos um valor de Octal para Decimal pegamos cada digito do valor e multiplicamos pelo resultado da potenciação feita com base 8 elevado a um expoente crescente começando do 0 no primeiro digito a direita indo ate o 7 no ultimo digito (caso o valor ocupe 8 dígitos).  
+
+### Octal para binário e vice versa  
+
+Para realizamos qualquer conversão de octal para binário ou binário para octal primeiro devemos converter o valor de octal para decimal e ai sim converter para binário no primeiro caso, no segundo devemos converter o binário para decimal e ai sim convertermos para octal.  
