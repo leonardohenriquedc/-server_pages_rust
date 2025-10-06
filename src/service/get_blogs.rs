@@ -1,13 +1,17 @@
 use std::collections::HashMap;
 use std::env;
 use std::fs::{self};
+use std::str::FromStr;
 
+use crate::structs::post_datas::PostDatas;
 use crate::structs::{
     index_struct::TemplateIndex, page_view_article_struct::TemplatePageViewArticle,
 };
 
 use actix_web::ResponseError;
+use actix_web::cookie::time::error;
 use askama::Template;
+use chrono::{Local, NaiveDate};
 use pulldown_cmark::{Options, Parser, html};
 
 fn return_envs_links(type_number: i8) -> String {
@@ -26,8 +30,11 @@ pub async fn get_links_of_all_blogs() -> String {
 
     let name_blogs = get_name_files().await;
 
-    for (name, title) in name_blogs {
-        template_index.insert_tag_ancora(format!("{}post/{}", return_envs_links(2), name), title);
+    for posts in name_blogs {
+        template_index.insert_tag_ancora(
+            format!("{}post/{}", return_envs_links(2), posts.name),
+            posts.title,
+        );
     }
 
     template_index.render().unwrap()
@@ -87,30 +94,38 @@ fn parsing_md_to_html(content: &str) -> String {
     content_as_html
 }
 
-async fn get_name_files() -> HashMap<String, String> {
-    let mut name_title_file_blogs: HashMap<String, String> = HashMap::new();
+async fn get_name_files() -> Vec<PostDatas> {
+    let mut name_title_file_blogs: Vec<PostDatas> = Vec::new();
 
     let read_dir = fs::read_dir(return_envs_links(1)).expect("Não foi possivel localizar pasta");
 
     for entry in read_dir {
         match entry {
             Ok(valor) => {
-                name_title_file_blogs.insert(
-                    valor.file_name().into_string().unwrap(),
-                    get_title_of_file(
-                        fs::read_to_string(valor.path()).expect("Não foi possivel ler arquivo"),
-                        "title: ".to_string(),
-                    ),
-                );
+                let file = fs::read_to_string(valor.path()).expect("Não foi possivel ler arquivo");
+
+                let post = PostDatas {
+                    name: valor.file_name().into_string().unwrap(),
+                    title: get_metadata_of_file(file.clone(), "title: ".to_string()),
+                    date: NaiveDate::from_str(
+                        get_metadata_of_file(file, "date: ".to_string()).as_str(),
+                    )
+                    .unwrap(),
+                };
+
+                name_title_file_blogs.push(post);
             }
+
             Err(error) => print!("Error occurred: {}", error.status_code()),
         }
     }
 
+    PostDatas::sort_by_date(&mut name_title_file_blogs);
+
     name_title_file_blogs
 }
 
-fn get_title_of_file(file: String, metadado: String) -> String {
+fn get_metadata_of_file(file: String, metadado: String) -> String {
     let mut metadados_dois: Vec<String> = Vec::new();
 
     for (index, line) in file.lines().enumerate() {

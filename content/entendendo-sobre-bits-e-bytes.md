@@ -2,7 +2,7 @@
 
 title: Entendo sobre bits e bytes e operadores logicos
 author: leonardo
-data: 2025/09/24
+date: 2025-09-24
 tags: ["Bits", "Bytes", "Computação"]
 ---
 
@@ -125,3 +125,31 @@ Para fazer a conversão de Decimal para Octal fazemos exatamente no formato do D
 ### Octal para binário e vice versa  
 
 Para realizamos qualquer conversão de octal para binário ou binário para octal primeiro devemos converter o valor de octal para decimal e ai sim converter para binário no primeiro caso, no segundo devemos converter o binário para decimal e ai sim convertermos para octal.  
+
+## Base Hexadecimal
+
+A base Hexadecimal e usada em muitos âmbitos da tecnologia, desde criptografias de valores até chaves de autenticação e tokens. ␍
+A base Hexadecimal utiliza a base 16 (daí o nome obviamente), porem há uma peculiaridade que vamos ver agora: Os valores dessa base vão de 0 a 9 (Como na base decimal) porem quando chega em valores que dois digitos (10 ate o 15) em vez de usar os dígitos normalmente ele usa letras que vão de A (10) ate 15 (F), vejamos melhor nesta tabela:  
+
+| Decimal | Hexadecimal |
+| ------- | ----------- |
+| 0 | 0 |
+| 1 | 1 |
+| 2 | 2 |
+| 3 | 3 |
+| 4 | 4 |
+| 5 | 5 |
+| 6 | 6 |
+| 7 | 7 |
+| 8 | 8 |
+| 9 | 9 |
+| 10 | A |
+| 11 | B |
+| 12 | C |
+| 13 | D |
+| 14 | E |
+| 15 | F |
+  
+Por que isto acontece? Um digito no valor Decimal apenas 1 caractere, porem quando vamos representar valores acima de dois dígitos, passamos a ter que usar dois caracteres para mostrar esse valores, portanto para continuar usando apenas 1, mudamos a representação do valor em números por letra, as vantagens disso e que ocupam menos espaço em memoria, além de se tornarem visivelmente menores.  
+
+### Conversões de numeros Hexadecimais  

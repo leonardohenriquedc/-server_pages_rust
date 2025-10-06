@@ -2,7 +2,7 @@
 
 title: Um resumo sobre Cyclic Redundance Check
 author: leonardo
-data: 2025/09/22
+date: 2025-09-22
 tags: ["CRC", "Redes", "Segurança de redes"]
 ---
 
