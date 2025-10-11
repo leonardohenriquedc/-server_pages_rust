@@ -7,6 +7,7 @@ use askama::Template;
 pub struct TemplateIndex {
     pub style_sheet: String,
     links: Vec<String>,
+    link_request_about: String,
 }
 
 impl TemplateIndex {
@@ -28,6 +29,7 @@ impl TemplateIndex {
         TemplateIndex {
             style_sheet: string_style,
             links: Vec::new(),
+            link_request_about: format!("{}about.md", env::var("LINK_REQUEST_RELEASE").unwrap()),
         }
     }
 }

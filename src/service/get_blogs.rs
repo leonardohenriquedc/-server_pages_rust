@@ -1,4 +1,3 @@
-use std::collections::HashMap;
 use std::env;
 use std::fs::{self};
 use std::str::FromStr;
@@ -9,9 +8,8 @@ use crate::structs::{
 };
 
 use actix_web::ResponseError;
-use actix_web::cookie::time::error;
 use askama::Template;
-use chrono::{Local, NaiveDate};
+use chrono::NaiveDate;
 use pulldown_cmark::{Options, Parser, html};
 
 fn return_envs_links(type_number: i8) -> String {
